@@ -61,20 +61,20 @@ const Projects = () => {
 
   return (
     <section id="projects" className="section-spacing bg-section-bg/30">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-center">
             Featured <span className="text-gradient">Projects</span>
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-accent to-primary mx-auto mb-16" />
 
           {/* Main Projects */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 mb-12 sm:mb-16">
             {mainProjects.map((project, index) => (
               <motion.div
                 key={project.title}
@@ -141,10 +141,10 @@ const Projects = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.6, duration: 0.6 }}
           >
-            <h3 className="text-2xl font-bold mb-6 text-center">
+            <h3 className="text-xl sm:text-2xl font-bold mb-6 text-center">
               Academic Project <span className="text-gradient">Consultations</span>
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
               {academicProjects.map((project, index) => (
                 <motion.div
                   key={project.title}

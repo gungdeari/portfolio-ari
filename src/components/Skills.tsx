@@ -33,7 +33,7 @@ const Skills = () => {
 
   return (
     <section id="skills" className="section-spacing">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
@@ -41,7 +41,7 @@ const Skills = () => {
           transition={{ duration: 0.6 }}
           className="max-w-6xl mx-auto"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-center">
             Skills & <span className="text-gradient">Expertise</span>
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-accent to-primary mx-auto mb-16" />
@@ -53,13 +53,13 @@ const Skills = () => {
                 initial={{ opacity: 0, x: catIndex === 0 ? -50 : 50 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ delay: 0.2 + catIndex * 0.1, duration: 0.6 }}
-                className="bg-card rounded-2xl p-8 border border-border/50 card-hover"
+                className="bg-card rounded-2xl p-6 sm:p-8 border border-border/50 card-hover"
               >
-                <div className="flex items-center gap-4 mb-6">
-                  <div className={`p-3 rounded-xl bg-gradient-to-br ${category.color}`}>
-                    <category.icon className="w-6 h-6 text-white" />
+                <div className="flex items-center gap-3 sm:gap-4 mb-6">
+                  <div className={`p-2 sm:p-3 rounded-xl bg-gradient-to-br ${category.color}`}>
+                    <category.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold">{category.title}</h3>
+                  <h3 className="text-xl sm:text-2xl font-bold">{category.title}</h3>
                 </div>
 
                 <div className="flex flex-wrap gap-3">

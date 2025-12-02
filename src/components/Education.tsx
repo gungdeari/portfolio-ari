@@ -9,7 +9,7 @@ const Education = () => {
 
   return (
     <section id="education" className="section-spacing bg-section-bg/30">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
@@ -17,7 +17,7 @@ const Education = () => {
           transition={{ duration: 0.6 }}
           className="max-w-4xl mx-auto"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-center">
             Education & <span className="text-gradient">Publications</span>
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-accent to-primary mx-auto mb-16" />
@@ -27,14 +27,14 @@ const Education = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="bg-card rounded-2xl p-8 border border-border/50 card-hover mb-8"
+            className="bg-card rounded-2xl p-6 sm:p-8 border border-border/50 card-hover mb-8"
           >
-            <div className="flex items-start gap-4 mb-4">
-              <div className="p-3 bg-gradient-to-br from-accent to-primary rounded-xl">
+            <div className="flex flex-col sm:flex-row items-start gap-4 mb-4">
+              <div className="p-3 bg-gradient-to-br from-accent to-primary rounded-xl sm:self-start">
                 <GraduationCap className="w-6 h-6 text-white" />
               </div>
               <div className="flex-1">
-                <h3 className="text-2xl font-bold mb-2">Universitas Primakara</h3>
+                <h3 className="text-xl sm:text-2xl font-bold mb-2">Universitas Primakara</h3>
                 <p className="text-accent font-medium mb-1">
                   Bachelor of Information Systems
                 </p>
@@ -61,9 +61,9 @@ const Education = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="bg-card rounded-2xl p-8 border border-border/50 card-hover"
+            className="bg-card rounded-2xl p-6 sm:p-8 border border-border/50 card-hover"
           >
-            <div className="flex items-start gap-4">
+            <div className="flex flex-col sm:flex-row items-start gap-4">
               <div className="p-3 bg-gradient-to-br from-primary to-accent rounded-xl">
                 <FileText className="w-6 h-6 text-white" />
               </div>

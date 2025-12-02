@@ -32,7 +32,7 @@ const Certifications = () => {
 
   return (
     <section id="certifications" className="section-spacing">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
@@ -40,7 +40,7 @@ const Certifications = () => {
           transition={{ duration: 0.6 }}
           className="max-w-5xl mx-auto"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-center">
             Certifications & <span className="text-gradient">Credentials</span>
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-accent to-primary mx-auto mb-16" />

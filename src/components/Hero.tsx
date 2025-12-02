@@ -22,8 +22,8 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="container mx-auto px-4 z-10">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 z-10 pt-20 md:pt-0">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 md:gap-12">
           {/* Text Content */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -40,7 +40,7 @@ const Hero = () => {
               <p className="text-accent text-sm md:text-base font-medium mb-2">
                 📍 Ubud, Bali
               </p>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
                 Anak Agung Gede
                 <br />
                 <span className="text-gradient">Ari Saputra</span>
@@ -51,7 +51,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-xl md:text-2xl text-muted-foreground mb-2"
+              className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground mb-2"
             >
               Data Analyst | Machine Learning | Web Developer
             </motion.p>
@@ -69,23 +69,23 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.6 }}
-              className="flex flex-wrap gap-4 justify-center lg:justify-start"
+              className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center lg:justify-start w-full sm:w-auto"
             >
               <Button
                 size="lg"
-                className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium w-full sm:w-auto"
                 onClick={() => window.open('/cv.pdf', '_blank')}
               >
-                <Download className="mr-2 h-5 w-5" />
+                <Download className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                 Download CV
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="border-primary text-primary hover:bg-primary/10"
+                className="border-primary text-primary hover:bg-primary/10 w-full sm:w-auto"
                 onClick={() => scrollToSection('projects')}
               >
-                <ExternalLink className="mr-2 h-5 w-5" />
+                <ExternalLink className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                 View Projects
               </Button>
             </motion.div>
@@ -99,7 +99,7 @@ const Hero = () => {
             className="flex-shrink-0"
           >
             <div className="relative">
-              <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/30 shadow-[var(--shadow-glow)]">
+              <div className="w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-primary/30 shadow-[var(--shadow-glow)]">
                 <img
                   src={profileAvatar}
                   alt="Anak Agung Gede Ari Saputra"

@@ -46,7 +46,7 @@ const Experience = () => {
 
   return (
     <section id="experience" className="section-spacing">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
@@ -54,7 +54,7 @@ const Experience = () => {
           transition={{ duration: 0.6 }}
           className="max-w-4xl mx-auto"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-center">
             Professional <span className="text-gradient">Experience</span>
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-accent to-primary mx-auto mb-16" />
@@ -69,7 +69,7 @@ const Experience = () => {
                 initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ delay: 0.2 + index * 0.15, duration: 0.6 }}
-                className={`relative mb-12 md:mb-16 ${
+                className={`relative mb-8 sm:mb-12 md:mb-16 ${
                   index % 2 === 0 ? "md:pr-1/2 md:text-right" : "md:pl-1/2 md:ml-auto"
                 } md:w-1/2`}
               >
@@ -80,7 +80,7 @@ const Experience = () => {
                   }`}
                 />
 
-                <div className="bg-card rounded-xl p-6 border border-border/50 card-hover">
+                <div className="bg-card rounded-xl p-5 sm:p-6 border border-border/50 card-hover">
                   <div className="flex items-start gap-3 mb-4">
                     <div className="p-2 bg-accent/20 rounded-lg">
                       <Briefcase className="w-5 h-5 text-accent" />
