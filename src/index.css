@@ -74,6 +74,13 @@ All colors MUST be HSL.
   }
 
   .section-spacing {
-    @apply py-20 md:py-28;
+    @apply py-12 sm:py-16 md:py-20 lg:py-28;
+  }
+  
+  /* Better touch targets for mobile */
+  @media (max-width: 640px) {
+    button, a {
+      min-height: 44px;
+    }
   }
 }

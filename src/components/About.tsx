@@ -27,7 +27,7 @@ const About = () => {
 
   return (
     <section id="about" className="section-spacing bg-section-bg/30">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 50 }}
@@ -35,7 +35,7 @@ const About = () => {
           transition={{ duration: 0.6 }}
           className="max-w-5xl mx-auto"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-center">
             About <span className="text-gradient">Me</span>
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-accent to-primary mx-auto mb-12" />
@@ -44,9 +44,9 @@ const About = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="bg-card rounded-2xl p-8 md:p-10 mb-12 border border-border/50 shadow-lg"
+            className="bg-card rounded-2xl p-6 sm:p-8 md:p-10 mb-12 border border-border/50 shadow-lg"
           >
-            <p className="text-base md:text-lg leading-relaxed text-foreground/90 mb-6">
+            <p className="text-sm sm:text-base md:text-lg leading-relaxed text-foreground/90 mb-6">
               Seorang fresh graduate Sistem Informasi yang memiliki ketertarikan kuat dalam
               mengubah ide menjadi solusi digital yang nyata. Berpengalaman dalam pengolahan data
               menggunakan Python, SQL, dan Excel, membangun model machine learning untuk
@@ -63,7 +63,7 @@ const About = () => {
           </motion.div>
 
           {/* Strengths Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
             {strengths.map((strength, index) => (
               <motion.div
                 key={strength.title}
