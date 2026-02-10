@@ -8,44 +8,44 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Dark mode portfolio theme - Deep Blues */
-    --background: 207 70% 18%;
-    --foreground: 0 0% 96%;
+    /* Clean white professional theme */
+    --background: 0 0% 100%;
+    --foreground: 210 20% 15%;
 
-    --card: 207 55% 25%;
-    --card-foreground: 0 0% 96%;
+    --card: 210 20% 98%;
+    --card-foreground: 210 20% 15%;
 
-    --popover: 207 55% 25%;
-    --popover-foreground: 0 0% 96%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 20% 15%;
 
-    --primary: 193 55% 27%;
-    --primary-foreground: 0 0% 96%;
+    --primary: 207 70% 28%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 207 55% 25%;
-    --secondary-foreground: 0 0% 96%;
+    --secondary: 210 15% 95%;
+    --secondary-foreground: 210 20% 15%;
 
-    --muted: 207 55% 22%;
-    --muted-foreground: 0 0% 75%;
+    --muted: 210 15% 93%;
+    --muted-foreground: 210 10% 45%;
 
-    --accent: 193 55% 27%;
-    --accent-foreground: 0 0% 96%;
+    --accent: 193 55% 32%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 96%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 207 55% 30%;
-    --input: 207 55% 25%;
-    --ring: 193 55% 27%;
+    --border: 210 15% 88%;
+    --input: 210 15% 90%;
+    --ring: 207 70% 28%;
 
     --radius: 0.75rem;
 
     /* Custom portfolio colors */
-    --hero-gradient-start: 207 70% 18%;
-    --hero-gradient-end: 207 55% 25%;
-    --section-bg: 207 60% 20%;
+    --hero-gradient-start: 0 0% 100%;
+    --hero-gradient-end: 210 20% 98%;
+    --section-bg: 210 15% 97%;
     
     /* Shadows and effects */
-    --shadow-glow: 0 0 40px hsl(193 55% 27% / 0.3);
+    --shadow-glow: 0 4px 20px hsl(207 70% 28% / 0.08);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
