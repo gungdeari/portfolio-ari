@@ -1,8 +1,26 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { ExternalLink, Github, Layers, Users, Cpu, Globe, Brain, BarChart3 } from "lucide-react";
+import { ExternalLink, Github, Layers, Cpu, Globe, Brain, BarChart3, Paintbrush, Atom, Code2, FileCode, Server, Database } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+const toolIcons: Record<string, LucideIcon> = {
+  Figma: Paintbrush,
+  React: Atom,
+  "Tailwind CSS": Paintbrush,
+  Python: Code2,
+  TensorFlow: Brain,
+  "TensorFlow.js": Brain,
+  "Express.js": Server,
+  Laravel: Server,
+  MySQL: Database,
+  GIS: Globe,
+  "scikit-learn": BarChart3,
+  "Data Analysis": BarChart3,
+  CNN: Cpu,
+  JavaScript: FileCode,
+};
 
 const Projects = () => {
   const ref = useRef(null);
@@ -136,14 +154,18 @@ const Projects = () => {
                   {/* Tools & Links */}
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <div className="flex flex-wrap gap-2">
-                      {project.tools.map((tool) => (
-                        <span
-                          key={tool}
-                          className="text-xs px-3 py-1.5 bg-primary/10 border border-primary/20 rounded-full text-primary font-medium"
-                        >
-                          {tool}
-                        </span>
-                      ))}
+                      {project.tools.map((tool) => {
+                        const ToolIcon = toolIcons[tool];
+                        return (
+                          <span
+                            key={tool}
+                            className="inline-flex items-center gap-1 text-xs px-3 py-1.5 bg-primary/10 border border-primary/20 rounded-full text-primary font-medium"
+                          >
+                            {ToolIcon && <ToolIcon className="w-3 h-3" />}
+                            {tool}
+                          </span>
+                        );
+                      })}
                     </div>
                     <div className="flex gap-2">
                       {project.link && (
@@ -201,14 +223,18 @@ const Projects = () => {
                   <h4 className="font-semibold mb-2 text-sm">{project.title}</h4>
                   <p className="text-xs text-muted-foreground mb-3 leading-relaxed">{project.description}</p>
                   <div className="flex flex-wrap gap-1">
-                    {project.tools.map((tool) => (
-                      <span
-                        key={tool}
-                        className="text-xs px-2 py-0.5 bg-muted rounded text-muted-foreground"
-                      >
-                        {tool}
-                      </span>
-                    ))}
+                    {project.tools.map((tool) => {
+                      const ToolIcon = toolIcons[tool];
+                      return (
+                        <span
+                          key={tool}
+                          className="inline-flex items-center gap-1 text-xs px-2 py-0.5 bg-muted rounded text-muted-foreground"
+                        >
+                          {ToolIcon && <ToolIcon className="w-3 h-3" />}
+                          {tool}
+                        </span>
+                      );
+                    })}
                   </div>
                 </motion.div>
               ))}
