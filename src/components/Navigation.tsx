@@ -8,10 +8,9 @@ const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
+    { label: "Home", href: "#home" },
     { label: "About", href: "#about" },
-    { label: "Skills", href: "#skills" },
     { label: "Projects", href: "#projects" },
-    { label: "Experience", href: "#experience" },
     { label: "Education", href: "#education" },
     { label: "Certifications", href: "#certifications" },
     { label: "Contact", href: "#contact" },
@@ -26,8 +25,12 @@ const Navigation = () => {
   }, []);
 
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    element?.scrollIntoView({ behavior: "smooth" });
+    if (href === "#home") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      const element = document.querySelector(href);
+      element?.scrollIntoView({ behavior: "smooth" });
+    }
     setIsMobileMenuOpen(false);
   };
 
@@ -44,22 +47,8 @@ const Navigation = () => {
         }`}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <motion.a
-              href="#"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-xl font-bold text-gradient"
-              onClick={(e) => {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              }}
-            >
-              AA Ari Saputra
-            </motion.a>
-
-            {/* Desktop Navigation */}
+          <div className="flex items-center justify-center h-16">
+            {/* Desktop Navigation — centered */}
             <div className="hidden lg:flex items-center gap-1">
               {navItems.map((item, index) => (
                 <motion.div
@@ -84,7 +73,7 @@ const Navigation = () => {
             <Button
               variant="ghost"
               size="sm"
-              className="lg:hidden"
+              className="lg:hidden absolute right-4"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
