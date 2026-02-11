@@ -1,11 +1,13 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import {
   ExternalLink, Github, Globe, Brain, Layers, Briefcase,
-  Paintbrush, Atom, Code2, Server, Database, BarChart3, Cpu, FileCode
+  Paintbrush, Atom, Code2, Server, Database, BarChart3, Cpu, FileCode,
+  ChevronLeft, ChevronRight, X, ZoomIn
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 
 import senyumBaliImg from "@/assets/project-senyum-bali.jpg";
 import sipenariImg from "@/assets/project-sipenari.jpg";
@@ -24,7 +26,7 @@ const mainProjects = [
     title: "Senyum-Bali",
     year: "2025",
     icon: Globe,
-    image: senyumBaliImg,
+    images: [senyumBaliImg],
     description: "Platform edukasi kesehatan gigi pasca tradisi Metatah/Potong Gigi di Bali dengan UI modern dan interaktif.",
     problem: "Kurangnya edukasi kesehatan gigi pasca ritual Metatah di kalangan masyarakat Bali.",
     solution: "Membangun platform web interaktif dengan konten edukatif yang mudah diakses dan visual yang menarik.",
@@ -37,7 +39,7 @@ const mainProjects = [
     title: "Sipenari",
     year: "2024",
     icon: Brain,
-    image: sipenariImg,
+    images: [sipenariImg],
     description: "Web-based Balinese dance recognition system using CNN and TensorFlow.js.",
     problem: "Difficulty in identifying and classifying traditional Balinese dances for preservation and education.",
     solution: "Built a CNN model trained on Balinese dance images, deployed via TensorFlow.js on a web app with Express.js backend.",
@@ -50,7 +52,7 @@ const mainProjects = [
     title: "Sistem Manajemen Surat & GIS Desa Batur Tengah",
     year: "2023",
     icon: Layers,
-    image: suratGisImg,
+    images: [suratGisImg],
     description: "Sistem manajemen surat digital dan pemetaan geografis wisata budaya untuk Desa Batur Tengah.",
     problem: "Pengelolaan surat desa masih manual dan data geografis wisata budaya belum terdokumentasi secara digital.",
     solution: "Membangun sistem manajemen surat berbasis Laravel dengan integrasi GIS untuk pemetaan wisata budaya.",
@@ -104,6 +106,17 @@ const experiences = [
 const ProjectsExperience = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [galleryOpen, setGalleryOpen] = useState(false);
+  const [galleryImages, setGalleryImages] = useState<string[]>([]);
+  const [galleryIndex, setGalleryIndex] = useState(0);
+  const [galleryTitle, setGalleryTitle] = useState("");
+
+  const openGallery = (images: string[], title: string, index = 0) => {
+    setGalleryImages(images);
+    setGalleryTitle(title);
+    setGalleryIndex(index);
+    setGalleryOpen(true);
+  };
 
   return (
     <section id="projects" className="section-spacing bg-section-bg/30">
@@ -125,9 +138,23 @@ const ProjectsExperience = () => {
                 transition={{ delay: 0.2 + index * 0.15, duration: 0.6 }}
                 className="bg-card border border-border/50 rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-300 card-hover"
               >
-                {/* Project Image */}
-                <div className="w-full h-48 sm:h-56 md:h-64 overflow-hidden">
-                  <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+                {/* Project Images - Clickable Gallery */}
+                <div
+                  className="w-full h-48 sm:h-56 md:h-64 overflow-hidden relative group cursor-pointer"
+                  onClick={() => openGallery(project.images, project.title)}
+                >
+                  <img src={project.images[0]} alt={project.title} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-2 text-white bg-black/50 px-4 py-2 rounded-full text-sm font-medium">
+                      <ZoomIn className="w-4 h-4" />
+                      View {project.images.length > 1 ? `${project.images.length} Photos` : "Photo"}
+                    </div>
+                  </div>
+                  {project.images.length > 1 && (
+                    <div className="absolute bottom-3 right-3 bg-black/60 text-white text-xs px-2 py-1 rounded-full">
+                      1/{project.images.length}
+                    </div>
+                  )}
                 </div>
 
                 <div className="p-6 sm:p-8">
@@ -244,6 +271,45 @@ const ProjectsExperience = () => {
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Image Gallery Dialog */}
+      <Dialog open={galleryOpen} onOpenChange={setGalleryOpen}>
+        <DialogContent className="max-w-4xl w-[95vw] p-0 bg-black/95 border-none overflow-hidden">
+          <DialogTitle className="sr-only">{galleryTitle} Gallery</DialogTitle>
+          <div className="relative">
+            <img
+              src={galleryImages[galleryIndex]}
+              alt={`${galleryTitle} - Image ${galleryIndex + 1}`}
+              className="w-full max-h-[80vh] object-contain"
+            />
+            {galleryImages.length > 1 && (
+              <>
+                <button
+                  onClick={() => setGalleryIndex((i) => (i - 1 + galleryImages.length) % galleryImages.length)}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-2 rounded-full transition-colors"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+                <button
+                  onClick={() => setGalleryIndex((i) => (i + 1) % galleryImages.length)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-2 rounded-full transition-colors"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                  {galleryImages.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setGalleryIndex(i)}
+                      className={`w-2.5 h-2.5 rounded-full transition-colors ${i === galleryIndex ? "bg-white" : "bg-white/40"}`}
+                    />
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
