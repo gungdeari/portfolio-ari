@@ -211,30 +211,41 @@ const ProjectsExperience = () => {
             ))}
           </div>
 
-          {/* Academic Projects */}
+          {/* Academic Consultations - Single Card */}
           <motion.div initial={{ opacity: 0, y: 30 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.6, duration: 0.6 }}>
-            <h3 className="text-xl sm:text-2xl font-bold mb-2 text-center">Academic <span className="text-gradient">Consultations</span></h3>
-            <p className="text-muted-foreground text-center text-sm mb-8">ML & data projects I consulted on for academic final projects.</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-16">
-              {academicProjects.map((project, index) => (
-                <motion.div key={project.title} initial={{ opacity: 0, scale: 0.9 }} animate={isInView ? { opacity: 1, scale: 1 } : {}} transition={{ delay: 0.7 + index * 0.1, duration: 0.4 }} className="bg-card border border-border/50 rounded-xl p-5 card-hover group">
-                  <div className="p-2 bg-accent/10 rounded-lg w-fit mb-3 group-hover:bg-accent/20 transition-colors">
-                    <project.icon className="w-4 h-4 text-accent" />
-                  </div>
-                  <h4 className="font-semibold mb-2 text-sm">{project.title}</h4>
-                  <p className="text-xs text-muted-foreground mb-3 leading-relaxed">{project.description}</p>
-                  <div className="flex flex-wrap gap-1">
-                    {project.tools.map((tool) => {
-                      const ToolIcon = toolIcons[tool];
-                      return (
-                        <span key={tool} className="inline-flex items-center gap-1 text-xs px-2 py-0.5 bg-muted rounded text-muted-foreground">
-                          {ToolIcon && <ToolIcon className="w-3 h-3" />} {tool}
-                        </span>
-                      );
-                    })}
-                  </div>
-                </motion.div>
-              ))}
+            <div className="bg-card border border-border/50 rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-300 card-hover p-6 sm:p-8 mb-16">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-2.5 bg-accent/15 rounded-xl">
+                  <BarChart3 className="w-6 h-6 text-accent" />
+                </div>
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-bold">Academic <span className="text-gradient">Consultations</span></h3>
+                  <p className="text-sm text-muted-foreground">ML & data projects I consulted on for academic final projects.</p>
+                </div>
+              </div>
+              <div className="space-y-4">
+                {academicProjects.map((project, index) => (
+                  <motion.div key={project.title} initial={{ opacity: 0, x: -20 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ delay: 0.7 + index * 0.1, duration: 0.4 }} className="flex items-start gap-4 p-4 bg-muted/50 rounded-xl hover:bg-muted/80 transition-colors">
+                    <div className="p-2 bg-accent/10 rounded-lg shrink-0">
+                      <project.icon className="w-4 h-4 text-accent" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="font-semibold text-sm mb-1">{project.title}</h4>
+                      <p className="text-xs text-muted-foreground mb-2 leading-relaxed">{project.description}</p>
+                      <div className="flex flex-wrap gap-1">
+                        {project.tools.map((tool) => {
+                          const ToolIcon = toolIcons[tool];
+                          return (
+                            <span key={tool} className="inline-flex items-center gap-1 text-xs px-2 py-0.5 bg-primary/10 border border-primary/20 rounded-full text-primary font-medium">
+                              {ToolIcon && <ToolIcon className="w-3 h-3" />} {tool}
+                            </span>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </motion.div>
 
