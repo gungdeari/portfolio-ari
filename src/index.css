@@ -2,51 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    /* Clean white professional theme */
     --background: 0 0% 100%;
-    --foreground: 210 20% 15%;
+    --foreground: 220 15% 15%;
 
-    --card: 210 20% 98%;
-    --card-foreground: 210 20% 15%;
+    --card: 0 0% 99%;
+    --card-foreground: 220 15% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 210 20% 15%;
+    --popover-foreground: 220 15% 15%;
 
-    --primary: 207 70% 28%;
+    --primary: 215 65% 25%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 15% 95%;
-    --secondary-foreground: 210 20% 15%;
+    --secondary: 220 10% 96%;
+    --secondary-foreground: 220 15% 15%;
 
-    --muted: 210 15% 93%;
-    --muted-foreground: 210 10% 45%;
+    --muted: 220 10% 94%;
+    --muted-foreground: 220 8% 50%;
 
-    --accent: 193 55% 32%;
+    --accent: 200 50% 30%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 210 15% 88%;
-    --input: 210 15% 90%;
-    --ring: 207 70% 28%;
+    --border: 220 10% 90%;
+    --input: 220 10% 92%;
+    --ring: 215 65% 25%;
 
-    --radius: 0.75rem;
+    --radius: 0.625rem;
 
-    /* Custom portfolio colors */
     --hero-gradient-start: 0 0% 100%;
-    --hero-gradient-end: 210 20% 98%;
-    --section-bg: 210 15% 97%;
+    --hero-gradient-end: 220 10% 98%;
+    --section-bg: 220 10% 97%;
     
-    /* Shadows and effects */
-    --shadow-glow: 0 4px 20px hsl(207 70% 28% / 0.08);
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-glow: 0 2px 16px hsl(215 65% 25% / 0.06);
+    --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
 
@@ -70,14 +63,13 @@ All colors MUST be HSL.
   }
 
   .card-hover {
-    @apply transition-all duration-300 hover:scale-[1.02] hover:shadow-[var(--shadow-glow)];
+    @apply transition-all duration-200 hover:shadow-[var(--shadow-glow)];
   }
 
   .section-spacing {
-    @apply py-12 sm:py-16 md:py-20 lg:py-28;
+    @apply py-14 sm:py-16 md:py-20 lg:py-28;
   }
   
-  /* Better touch targets for mobile */
   @media (max-width: 640px) {
     button, a {
       min-height: 44px;
