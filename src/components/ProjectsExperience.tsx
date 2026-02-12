@@ -136,61 +136,83 @@ const ProjectsExperience = () => {
                 transition={{ delay: 0.1 + index * 0.1, duration: 0.5 }}
                 className="bg-card border border-border/50 rounded-2xl overflow-hidden hover:border-primary/30 transition-colors"
               >
-                {/* Thumbnail */}
-                <div
-                  className="w-full h-44 sm:h-52 md:h-60 overflow-hidden relative group cursor-pointer"
-                  onClick={() => openGallery(project.images, project.title)}
-                >
-                  <img src={project.images[0]} alt={project.title} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-colors flex items-center justify-center">
-                    <span className="opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-2 text-white bg-black/50 px-3 py-1.5 rounded-full text-xs font-medium">
-                      <ZoomIn className="w-3.5 h-3.5" />
-                      View {project.images.length > 1 ? `${project.images.length} Photos` : "Photo"}
-                    </span>
-                  </div>
-                </div>
-
-                <div className="p-5 sm:p-7">
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                <div className="flex flex-col md:flex-row">
+                  {/* Left: Description */}
+                  <div className="flex-1 p-5 sm:p-7 flex flex-col justify-between">
                     <div>
-                      <h3 className="text-lg sm:text-xl font-bold">{project.title}</h3>
-                      <p className="text-xs text-accent font-medium">{project.role}</p>
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                        <div>
+                          <h3 className="text-lg sm:text-xl font-bold">{project.title}</h3>
+                          <p className="text-xs text-accent font-medium">{project.role}</p>
+                        </div>
+                        <span className="text-xs text-muted-foreground font-mono">{project.year}</span>
+                      </div>
+
+                      <ul className="space-y-1.5 mb-5">
+                        {project.highlights.map((h, i) => (
+                          <li key={i} className="text-sm text-foreground/75 flex items-start gap-2">
+                            <span className="text-accent mt-1 text-xs">▸</span>
+                            <span>{h}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-                    <span className="text-xs text-muted-foreground font-mono">{project.year}</span>
+
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                      <div className="flex flex-wrap gap-1.5">
+                        {project.tools.map((tool) => {
+                          const Icon = toolIcons[tool];
+                          return (
+                            <span key={tool} className="inline-flex items-center gap-1 text-xs px-2.5 py-1 bg-muted rounded-full text-muted-foreground font-medium">
+                              {Icon && <Icon className="w-3 h-3" />} {tool}
+                            </span>
+                          );
+                        })}
+                      </div>
+                      <div className="flex gap-2">
+                        {project.link && (
+                          <Button size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground h-8 text-xs" onClick={() => window.open(project.link, "_blank")}>
+                            <ExternalLink className="mr-1.5 h-3.5 w-3.5" /> Live
+                          </Button>
+                        )}
+                        {project.github && (
+                          <Button size="sm" variant="outline" className="border-border text-foreground hover:bg-muted h-8 text-xs" onClick={() => window.open(project.github, "_blank")}>
+                            <Github className="mr-1.5 h-3.5 w-3.5" /> Code
+                          </Button>
+                        )}
+                      </div>
+                    </div>
                   </div>
 
-                  <ul className="space-y-1.5 mb-5">
-                    {project.highlights.map((h, i) => (
-                      <li key={i} className="text-sm text-foreground/75 flex items-start gap-2">
-                        <span className="text-accent mt-1 text-xs">▸</span>
-                        <span>{h}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                    <div className="flex flex-wrap gap-1.5">
-                      {project.tools.map((tool) => {
-                        const Icon = toolIcons[tool];
-                        return (
-                          <span key={tool} className="inline-flex items-center gap-1 text-xs px-2.5 py-1 bg-muted rounded-full text-muted-foreground font-medium">
-                            {Icon && <Icon className="w-3 h-3" />} {tool}
-                          </span>
-                        );
-                      })}
+                  {/* Right: Image Gallery */}
+                  <div className="md:w-[45%] flex flex-col">
+                    {/* Main image */}
+                    <div
+                      className="relative group cursor-pointer flex-1 min-h-[200px] md:min-h-0"
+                      onClick={() => openGallery(project.images, project.title, 0)}
+                    >
+                      <img src={project.images[0]} alt={project.title} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-colors flex items-center justify-center">
+                        <span className="opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-2 text-white bg-black/50 px-3 py-1.5 rounded-full text-xs font-medium">
+                          <ZoomIn className="w-3.5 h-3.5" />
+                          View
+                        </span>
+                      </div>
                     </div>
-                    <div className="flex gap-2">
-                      {project.link && (
-                        <Button size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground h-8 text-xs" onClick={() => window.open(project.link, "_blank")}>
-                          <ExternalLink className="mr-1.5 h-3.5 w-3.5" /> Live
-                        </Button>
-                      )}
-                      {project.github && (
-                        <Button size="sm" variant="outline" className="border-border text-foreground hover:bg-muted h-8 text-xs" onClick={() => window.open(project.github, "_blank")}>
-                          <Github className="mr-1.5 h-3.5 w-3.5" /> Code
-                        </Button>
-                      )}
-                    </div>
+                    {/* Thumbnail strip for multiple images */}
+                    {project.images.length > 1 && (
+                      <div className="flex gap-1 p-1 bg-muted/50">
+                        {project.images.map((img, i) => (
+                          <button
+                            key={i}
+                            onClick={() => openGallery(project.images, project.title, i)}
+                            className="flex-1 h-16 overflow-hidden rounded-sm opacity-70 hover:opacity-100 transition-opacity"
+                          >
+                            <img src={img} alt={`${project.title} ${i + 1}`} className="w-full h-full object-cover" />
+                          </button>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
               </motion.div>
