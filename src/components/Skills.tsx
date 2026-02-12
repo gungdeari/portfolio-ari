@@ -1,5 +1,4 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Code2, Database, Brain, Atom, Server, FileCode, Globe, Paintbrush, Users, MessageSquare, Handshake, RefreshCw } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
@@ -8,15 +7,35 @@ const Skills = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  const technical: { name: string; icon: LucideIcon }[] = [
-    { name: "Python", icon: Code2 },
-    { name: "SQL", icon: Database },
-    { name: "TensorFlow", icon: Brain },
-    { name: "React", icon: Atom },
-    { name: "Laravel", icon: Server },
-    { name: "JavaScript", icon: FileCode },
-    { name: "HTML & CSS", icon: Globe },
-    { name: "Figma", icon: Paintbrush },
+  const categories: { label: string; skills: { name: string; icon: LucideIcon }[] }[] = [
+    {
+      label: "Backend & Systems",
+      skills: [
+        { name: "Laravel", icon: Server },
+        { name: "Express.js", icon: Server },
+        { name: "Python", icon: Code2 },
+        { name: "SQL / MySQL", icon: Database },
+        { name: "REST API Design", icon: Globe },
+      ],
+    },
+    {
+      label: "Machine Learning",
+      skills: [
+        { name: "TensorFlow", icon: Brain },
+        { name: "scikit-learn", icon: Brain },
+        { name: "CNN / Deep Learning", icon: Brain },
+        { name: "Data Analysis", icon: Database },
+      ],
+    },
+    {
+      label: "Frontend & Tools",
+      skills: [
+        { name: "React", icon: Atom },
+        { name: "JavaScript / TS", icon: FileCode },
+        { name: "Tailwind CSS", icon: Paintbrush },
+        { name: "Figma", icon: Paintbrush },
+      ],
+    },
   ];
 
   const soft: { name: string; icon: LucideIcon }[] = [
@@ -33,42 +52,46 @@ const Skills = () => {
           ref={ref}
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="max-w-4xl mx-auto text-center"
+          transition={{ duration: 0.5 }}
+          className="max-w-3xl mx-auto"
         >
-          <h2 className="text-2xl sm:text-3xl font-bold mb-4">
+          <p className="text-accent text-xs font-mono tracking-widest uppercase text-center mb-2">Stack</p>
+          <h2 className="text-2xl sm:text-3xl font-bold mb-10 text-center">
             Skills & <span className="text-gradient">Expertise</span>
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-accent to-primary mx-auto mb-10" />
 
-          <div className="mb-6">
-            <p className="text-xs font-semibold text-accent uppercase tracking-wider mb-3">Technical</p>
-            <div className="flex flex-wrap justify-center gap-2">
-              {technical.map((s, i) => (
-                <motion.span
-                  key={s.name}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ delay: 0.2 + i * 0.04, duration: 0.3 }}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-primary/10 border border-primary/20 rounded-full text-sm font-medium text-primary"
-                >
-                  <s.icon className="w-3.5 h-3.5" />
-                  {s.name}
-                </motion.span>
-              ))}
-            </div>
+          <div className="space-y-6 mb-8">
+            {categories.map((cat, ci) => (
+              <div key={cat.label}>
+                <p className="text-xs font-semibold text-foreground/60 uppercase tracking-wider mb-3">{cat.label}</p>
+                <div className="flex flex-wrap gap-2">
+                  {cat.skills.map((s, i) => (
+                    <motion.span
+                      key={s.name}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                      transition={{ delay: 0.15 + ci * 0.1 + i * 0.03, duration: 0.3 }}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-card border border-border/50 rounded-lg text-sm font-medium text-foreground hover:border-primary/40 transition-colors"
+                    >
+                      <s.icon className="w-3.5 h-3.5 text-accent" />
+                      {s.name}
+                    </motion.span>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
 
           <div>
-            <p className="text-xs font-semibold text-accent uppercase tracking-wider mb-3">Soft Skills</p>
-            <div className="flex flex-wrap justify-center gap-2">
+            <p className="text-xs font-semibold text-foreground/60 uppercase tracking-wider mb-3">Soft Skills</p>
+            <div className="flex flex-wrap gap-2">
               {soft.map((s, i) => (
                 <motion.span
                   key={s.name}
-                  initial={{ opacity: 0, scale: 0.8 }}
+                  initial={{ opacity: 0, scale: 0.9 }}
                   animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ delay: 0.4 + i * 0.04, duration: 0.3 }}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-muted rounded-full text-sm font-medium text-muted-foreground"
+                  transition={{ delay: 0.5 + i * 0.04, duration: 0.3 }}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-muted rounded-lg text-sm font-medium text-muted-foreground"
                 >
                   <s.icon className="w-3.5 h-3.5" />
                   {s.name}

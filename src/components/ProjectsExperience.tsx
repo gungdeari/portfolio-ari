@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import {
   ExternalLink, Github, Globe, Brain, Layers, Briefcase,
   Paintbrush, Atom, Code2, Server, Database, BarChart3, Cpu, FileCode,
-  ChevronLeft, ChevronRight, X, ZoomIn
+  ChevronLeft, ChevronRight, ZoomIn
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -25,81 +25,78 @@ const mainProjects = [
   {
     title: "Senyum-Bali",
     year: "2025",
-    icon: Globe,
     images: [senyumBaliImg],
-    description: "Platform edukasi kesehatan gigi pasca tradisi Metatah/Potong Gigi di Bali dengan UI modern dan interaktif.",
-    problem: "Kurangnya edukasi kesehatan gigi pasca ritual Metatah di kalangan masyarakat Bali.",
-    solution: "Membangun platform web interaktif dengan konten edukatif yang mudah diakses dan visual yang menarik.",
-    impact: "Meningkatkan awareness kesehatan gigi pasca tradisi melalui platform digital yang accessible.",
     role: "Frontend Developer",
-    tools: ["Figma", "React", "Tailwind CSS"],
+    highlights: [
+      "Built interactive dental health education platform with React & Tailwind CSS",
+      "Designed responsive UI/UX in Figma, then implemented pixel-perfect frontend",
+      "Deployed on Netlify — accessible to Balinese communities post-Metatah ritual",
+    ],
+    tools: ["React", "Tailwind CSS", "Figma"],
     link: "https://senyum-bali.netlify.app",
   },
   {
     title: "Sipenari",
     year: "2024",
-    icon: Brain,
     images: [sipenariImg],
-    description: "Web-based Balinese dance recognition system using CNN and TensorFlow.js.",
-    problem: "Difficulty in identifying and classifying traditional Balinese dances for preservation and education.",
-    solution: "Built a CNN model trained on Balinese dance images, deployed via TensorFlow.js on a web app with Express.js backend.",
-    impact: "Achieved Top 50 Product Track at Bangkit 2024. Enabled real-time dance classification in the browser.",
-    role: "ML & Web Developer",
+    role: "ML & Backend Developer",
+    highlights: [
+      "Trained CNN model on 1,000+ Balinese dance images — 92% classification accuracy",
+      "Deployed model via TensorFlow.js for real-time browser inference",
+      "Built Express.js backend API for image processing pipeline",
+      "Achieved Top 50 Product Track at Bangkit 2024",
+    ],
     tools: ["Python", "TensorFlow", "TensorFlow.js", "Express.js"],
     github: "#",
   },
   {
-    title: "Sistem Manajemen Surat & GIS Desa Batur Tengah",
+    title: "Surat & GIS Desa Batur Tengah",
     year: "2023",
-    icon: Layers,
     images: [suratGisImg],
-    description: "Sistem manajemen surat digital dan pemetaan geografis wisata budaya untuk Desa Batur Tengah.",
-    problem: "Pengelolaan surat desa masih manual dan data geografis wisata budaya belum terdokumentasi secara digital.",
-    solution: "Membangun sistem manajemen surat berbasis Laravel dengan integrasi GIS untuk pemetaan wisata budaya.",
-    impact: "Digitalisasi administrasi desa dan pemetaan 20+ lokasi wisata budaya dalam program PPK ORMAWA.",
     role: "Backend & System Developer",
+    highlights: [
+      "Designed and built Laravel REST API for village letter management system",
+      "Integrated GIS mapping for 20+ cultural tourism locations",
+      "Replaced manual paper-based workflow with fully digital administration",
+    ],
     tools: ["Laravel", "MySQL", "GIS"],
   },
 ];
 
 const academicProjects = [
-  { title: "Decision Tree for Athlete Exercise Recommendations", description: "ML model for personalized physical exercise recommendations based on athlete data.", tools: ["Python", "scikit-learn"], icon: BarChart3 },
-  { title: "Simple Additive Weighting - Snana Yoga", description: "Decision support system for yoga movement recommendations using weighted scoring.", tools: ["Python", "Data Analysis"], icon: Cpu },
-  { title: "CNN Fish Freshness Classification", description: "Deep learning model to classify fish freshness levels from images using CNN.", tools: ["TensorFlow", "CNN", "Python"], icon: Brain },
+  { title: "Decision Tree for Athlete Exercise Recommendations", tools: ["Python", "scikit-learn"], icon: BarChart3 },
+  { title: "SAW-Based Yoga Movement Recommender", tools: ["Python", "Data Analysis"], icon: Cpu },
+  { title: "CNN Fish Freshness Classification", tools: ["TensorFlow", "CNN", "Python"], icon: Brain },
 ];
 
 const experiences = [
   {
     title: "Machine Learning Cohort",
-    organization: "Bangkit Academy 2024",
-    partner: "Dicoding / Google",
+    org: "Bangkit Academy 2024 · Google / Dicoding",
     period: "2024",
-    achievements: [
-      "Built capstone app 'Ageman' for Balinese dance recognition using ML",
-      "Achieved Top 50 Product Track",
+    points: [
+      "Built capstone app 'Ageman' — Balinese dance recognition using CNN",
+      "Achieved Top 50 Product Track out of 800+ teams",
       "Completed TensorFlow Developer Certificate simulation",
     ],
-    type: "Program",
   },
   {
     title: "IT Developer",
-    organization: "PPK ORMAWA",
+    org: "PPK ORMAWA",
     period: "2023",
-    achievements: [
+    points: [
       "Built letter management system + GIS for Desa Batur Tengah",
-      "Developed digital documentation and geographic mapping system",
+      "Led technical architecture and database design",
     ],
-    type: "Project",
   },
   {
     title: "Freelance Developer",
-    organization: "Independent",
-    period: "2022 - Present",
-    achievements: [
-      "Developed educational website projects",
-      "Provided ML and data consultation for academic final projects",
+    org: "Independent",
+    period: "2022 – Present",
+    points: [
+      "Delivered educational web projects for clients",
+      "Provided ML & data consultation for academic final projects",
     ],
-    type: "Freelance",
   },
 ];
 
@@ -121,87 +118,76 @@ const ProjectsExperience = () => {
   return (
     <section id="projects" className="section-spacing bg-section-bg/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div ref={ref} initial={{ opacity: 0, y: 50 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
-          <p className="text-accent text-sm font-medium text-center mb-2 tracking-widest uppercase">Portfolio</p>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-center">
+        <motion.div ref={ref} initial={{ opacity: 0, y: 40 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.5 }}>
+          <p className="text-accent text-xs font-mono tracking-widest uppercase text-center mb-2">Portfolio</p>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-12 text-center">
             Projects & <span className="text-gradient">Experience</span>
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-accent to-primary mx-auto mb-12 sm:mb-16" />
 
-          {/* Main Projects */}
-          <div className="space-y-8 sm:space-y-10 mb-16">
+          {/* ── Project Experience ── */}
+          <p className="text-xs font-mono text-accent uppercase tracking-widest mb-6">What I Built</p>
+
+          <div className="space-y-6 mb-16">
             {mainProjects.map((project, index) => (
               <motion.div
                 key={project.title}
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.2 + index * 0.15, duration: 0.6 }}
-                className="bg-card border border-border/50 rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-300 card-hover"
+                transition={{ delay: 0.1 + index * 0.1, duration: 0.5 }}
+                className="bg-card border border-border/50 rounded-2xl overflow-hidden hover:border-primary/30 transition-colors"
               >
-                {/* Project Images - Clickable Gallery */}
+                {/* Thumbnail */}
                 <div
-                  className="w-full h-48 sm:h-56 md:h-64 overflow-hidden relative group cursor-pointer"
+                  className="w-full h-44 sm:h-52 md:h-60 overflow-hidden relative group cursor-pointer"
                   onClick={() => openGallery(project.images, project.title)}
                 >
                   <img src={project.images[0]} alt={project.title} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
-                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-2 text-white bg-black/50 px-4 py-2 rounded-full text-sm font-medium">
-                      <ZoomIn className="w-4 h-4" />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-colors flex items-center justify-center">
+                    <span className="opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-2 text-white bg-black/50 px-3 py-1.5 rounded-full text-xs font-medium">
+                      <ZoomIn className="w-3.5 h-3.5" />
                       View {project.images.length > 1 ? `${project.images.length} Photos` : "Photo"}
-                    </div>
+                    </span>
                   </div>
-                  {project.images.length > 1 && (
-                    <div className="absolute bottom-3 right-3 bg-black/60 text-white text-xs px-2 py-1 rounded-full">
-                      1/{project.images.length}
-                    </div>
-                  )}
                 </div>
 
-                <div className="p-6 sm:p-8">
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
-                    <div className="flex items-center gap-3">
-                      <div className="p-2.5 bg-accent/15 rounded-xl">
-                        <project.icon className="w-6 h-6 text-accent" />
-                      </div>
-                      <div>
-                        <h3 className="text-xl sm:text-2xl font-bold">{project.title}</h3>
-                        <p className="text-sm text-accent font-medium">{project.role}</p>
-                      </div>
+                <div className="p-5 sm:p-7">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                    <div>
+                      <h3 className="text-lg sm:text-xl font-bold">{project.title}</h3>
+                      <p className="text-xs text-accent font-medium">{project.role}</p>
                     </div>
-                    <span className="text-xs text-muted-foreground bg-muted px-3 py-1.5 rounded-full font-medium self-start sm:self-auto">{project.year}</span>
+                    <span className="text-xs text-muted-foreground font-mono">{project.year}</span>
                   </div>
 
-                  <p className="text-foreground/80 mb-6 text-sm sm:text-base leading-relaxed">{project.description}</p>
-
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                    {[{ label: "Problem", text: project.problem }, { label: "Solution", text: project.solution }, { label: "Impact", text: project.impact }].map((item) => (
-                      <div key={item.label} className="bg-muted/50 rounded-xl p-4">
-                        <p className="text-xs font-semibold text-accent uppercase tracking-wider mb-2">{item.label}</p>
-                        <p className="text-sm text-foreground/70 leading-relaxed">{item.text}</p>
-                      </div>
+                  <ul className="space-y-1.5 mb-5">
+                    {project.highlights.map((h, i) => (
+                      <li key={i} className="text-sm text-foreground/75 flex items-start gap-2">
+                        <span className="text-accent mt-1 text-xs">▸</span>
+                        <span>{h}</span>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
 
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                    <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div className="flex flex-wrap gap-1.5">
                       {project.tools.map((tool) => {
-                        const ToolIcon = toolIcons[tool];
+                        const Icon = toolIcons[tool];
                         return (
-                          <span key={tool} className="inline-flex items-center gap-1 text-xs px-3 py-1.5 bg-primary/10 border border-primary/20 rounded-full text-primary font-medium">
-                            {ToolIcon && <ToolIcon className="w-3 h-3" />} {tool}
+                          <span key={tool} className="inline-flex items-center gap-1 text-xs px-2.5 py-1 bg-muted rounded-full text-muted-foreground font-medium">
+                            {Icon && <Icon className="w-3 h-3" />} {tool}
                           </span>
                         );
                       })}
                     </div>
                     <div className="flex gap-2">
                       {project.link && (
-                        <Button size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground" onClick={() => window.open(project.link, "_blank")}>
-                          <ExternalLink className="mr-2 h-4 w-4" /> Live Demo
+                        <Button size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground h-8 text-xs" onClick={() => window.open(project.link, "_blank")}>
+                          <ExternalLink className="mr-1.5 h-3.5 w-3.5" /> Live
                         </Button>
                       )}
                       {project.github && (
-                        <Button size="sm" variant="outline" className="border-primary/50 text-primary hover:bg-primary/10" onClick={() => window.open(project.github, "_blank")}>
-                          <Github className="mr-2 h-4 w-4" /> Code
+                        <Button size="sm" variant="outline" className="border-border text-foreground hover:bg-muted h-8 text-xs" onClick={() => window.open(project.github, "_blank")}>
+                          <Github className="mr-1.5 h-3.5 w-3.5" /> Code
                         </Button>
                       )}
                     </div>
@@ -211,37 +197,20 @@ const ProjectsExperience = () => {
             ))}
           </div>
 
-          {/* Academic Consultations - Single Card */}
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.6, duration: 0.6 }}>
-            <div className="bg-card border border-border/50 rounded-2xl overflow-hidden hover:border-primary/50 transition-all duration-300 card-hover p-6 sm:p-8 mb-16">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="p-2.5 bg-accent/15 rounded-xl">
-                  <BarChart3 className="w-6 h-6 text-accent" />
-                </div>
-                <div>
-                  <h3 className="text-xl sm:text-2xl font-bold">Academic <span className="text-gradient">Consultations</span></h3>
-                  <p className="text-sm text-muted-foreground">ML & data projects I consulted on for academic final projects.</p>
-                </div>
-              </div>
-              <div className="space-y-4">
+          {/* ── Academic Consultations ── */}
+          <motion.div initial={{ opacity: 0, y: 25 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.5, duration: 0.5 }}>
+            <div className="bg-card border border-border/50 rounded-2xl p-5 sm:p-7 mb-16">
+              <h3 className="text-base font-bold mb-1">Academic Consultations</h3>
+              <p className="text-xs text-muted-foreground mb-4">ML & data projects I consulted on for academic theses.</p>
+              <div className="space-y-3">
                 {academicProjects.map((project, index) => (
-                  <motion.div key={project.title} initial={{ opacity: 0, x: -20 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ delay: 0.7 + index * 0.1, duration: 0.4 }} className="flex items-start gap-4 p-4 bg-muted/50 rounded-xl hover:bg-muted/80 transition-colors">
-                    <div className="p-2 bg-accent/10 rounded-lg shrink-0">
-                      <project.icon className="w-4 h-4 text-accent" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h4 className="font-semibold text-sm mb-1">{project.title}</h4>
-                      <p className="text-xs text-muted-foreground mb-2 leading-relaxed">{project.description}</p>
-                      <div className="flex flex-wrap gap-1">
-                        {project.tools.map((tool) => {
-                          const ToolIcon = toolIcons[tool];
-                          return (
-                            <span key={tool} className="inline-flex items-center gap-1 text-xs px-2 py-0.5 bg-primary/10 border border-primary/20 rounded-full text-primary font-medium">
-                              {ToolIcon && <ToolIcon className="w-3 h-3" />} {tool}
-                            </span>
-                          );
-                        })}
-                      </div>
+                  <motion.div key={project.title} initial={{ opacity: 0, x: -15 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ delay: 0.6 + index * 0.08, duration: 0.4 }} className="flex items-center gap-3 p-3 bg-muted/50 rounded-lg">
+                    <project.icon className="w-4 h-4 text-accent shrink-0" />
+                    <span className="text-sm font-medium flex-1">{project.title}</span>
+                    <div className="flex gap-1 shrink-0">
+                      {project.tools.map((tool) => (
+                        <span key={tool} className="text-xs px-2 py-0.5 bg-background rounded text-muted-foreground">{tool}</span>
+                      ))}
                     </div>
                   </motion.div>
                 ))}
@@ -249,71 +218,49 @@ const ProjectsExperience = () => {
             </div>
           </motion.div>
 
-          {/* Experience Timeline */}
-          <motion.div initial={{ opacity: 0, y: 30 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.8, duration: 0.6 }}>
-            <h3 className="text-xl sm:text-2xl font-bold mb-2 text-center">Professional <span className="text-gradient">Experience</span></h3>
-            <p className="text-muted-foreground text-center text-sm mb-8">Key roles and programs that shaped my career.</p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {experiences.map((exp, index) => (
-                <motion.div key={exp.title} initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.9 + index * 0.1, duration: 0.4 }} className="bg-card rounded-xl p-5 border border-border/50 card-hover">
-                  <div className="flex items-start gap-3 mb-3">
-                    <div className="p-2 bg-accent/20 rounded-lg">
-                      <Briefcase className="w-4 h-4 text-accent" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-sm">{exp.title}</h4>
-                      <p className="text-xs text-accent font-medium">{exp.organization}{exp.partner && <span className="text-muted-foreground"> · {exp.partner}</span>}</p>
-                      <div className="flex items-center gap-2 mt-1">
-                        <span className="text-xs text-muted-foreground">{exp.period}</span>
-                        <span className="px-2 py-0.5 bg-muted rounded text-xs">{exp.type}</span>
-                      </div>
-                    </div>
+          {/* ── Professional Experience ── */}
+          <p className="text-xs font-mono text-accent uppercase tracking-widest mb-6">Roles & Responsibilities</p>
+
+          <div className="space-y-4">
+            {experiences.map((exp, index) => (
+              <motion.div key={exp.title} initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.7 + index * 0.1, duration: 0.4 }} className="bg-card rounded-xl p-5 border border-border/50 hover:border-primary/30 transition-colors">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-3">
+                  <div>
+                    <h4 className="font-bold text-sm">{exp.title}</h4>
+                    <p className="text-xs text-muted-foreground">{exp.org}</p>
                   </div>
-                  <ul className="space-y-1.5">
-                    {exp.achievements.map((a, i) => (
-                      <li key={i} className="text-xs text-foreground/70 flex items-start gap-2">
-                        <span className="text-accent mt-0.5">•</span><span>{a}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+                  <span className="text-xs font-mono text-muted-foreground">{exp.period}</span>
+                </div>
+                <ul className="space-y-1">
+                  {exp.points.map((p, i) => (
+                    <li key={i} className="text-xs text-foreground/70 flex items-start gap-2">
+                      <span className="text-accent mt-0.5">▸</span><span>{p}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       </div>
 
-      {/* Image Gallery Dialog */}
+      {/* Gallery Dialog */}
       <Dialog open={galleryOpen} onOpenChange={setGalleryOpen}>
         <DialogContent className="max-w-4xl w-[95vw] p-0 bg-black/95 border-none overflow-hidden">
           <DialogTitle className="sr-only">{galleryTitle} Gallery</DialogTitle>
           <div className="relative">
-            <img
-              src={galleryImages[galleryIndex]}
-              alt={`${galleryTitle} - Image ${galleryIndex + 1}`}
-              className="w-full max-h-[80vh] object-contain"
-            />
+            <img src={galleryImages[galleryIndex]} alt={`${galleryTitle} - ${galleryIndex + 1}`} className="w-full max-h-[80vh] object-contain" />
             {galleryImages.length > 1 && (
               <>
-                <button
-                  onClick={() => setGalleryIndex((i) => (i - 1 + galleryImages.length) % galleryImages.length)}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-2 rounded-full transition-colors"
-                >
+                <button onClick={() => setGalleryIndex((i) => (i - 1 + galleryImages.length) % galleryImages.length)} className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-2 rounded-full transition-colors">
                   <ChevronLeft className="w-5 h-5" />
                 </button>
-                <button
-                  onClick={() => setGalleryIndex((i) => (i + 1) % galleryImages.length)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-2 rounded-full transition-colors"
-                >
+                <button onClick={() => setGalleryIndex((i) => (i + 1) % galleryImages.length)} className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-2 rounded-full transition-colors">
                   <ChevronRight className="w-5 h-5" />
                 </button>
                 <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
                   {galleryImages.map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => setGalleryIndex(i)}
-                      className={`w-2.5 h-2.5 rounded-full transition-colors ${i === galleryIndex ? "bg-white" : "bg-white/40"}`}
-                    />
+                    <button key={i} onClick={() => setGalleryIndex(i)} className={`w-2 h-2 rounded-full transition-colors ${i === galleryIndex ? "bg-white" : "bg-white/40"}`} />
                   ))}
                 </div>
               </>

@@ -1,7 +1,6 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Mail, Phone, Linkedin, Github, Globe } from "lucide-react";
+import { Mail, Phone, Linkedin, Github, Globe, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -11,57 +10,23 @@ const Contact = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
 
-  const contactInfo = [
-    {
-      icon: Mail,
-      label: "Email",
-      value: "gungdeari51@gmail.com",
-      href: "mailto:gungdeari51@gmail.com",
-    },
-    {
-      icon: Phone,
-      label: "Phone",
-      value: "+62 857-3924-8003",
-      href: "tel:+6285739248003",
-    },
-    {
-      icon: Linkedin,
-      label: "LinkedIn",
-      value: "agungarisaputra",
-      href: "https://linkedin.com/in/agungarisaputra",
-    },
-    {
-      icon: Github,
-      label: "GitHub",
-      value: "gungdeari",
-      href: "https://github.com/gungdeari",
-    },
-    {
-      icon: Globe,
-      label: "Portfolio",
-      value: "s.id/portoari",
-      href: "https://s.id/portoari",
-    },
+  const links = [
+    { icon: Mail, label: "gungdeari51@gmail.com", href: "mailto:gungdeari51@gmail.com" },
+    { icon: Phone, label: "+62 857-3924-8003", href: "tel:+6285739248003" },
+    { icon: Linkedin, label: "linkedin.com/in/agungarisaputra", href: "https://linkedin.com/in/agungarisaputra" },
+    { icon: Github, label: "github.com/gungdeari", href: "https://github.com/gungdeari" },
+    { icon: Globe, label: "s.id/portoari", href: "https://s.id/portoari" },
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for reaching out. I'll get back to you soon.",
-    });
+    toast({ title: "Message Sent!", description: "Thank you — I'll respond within 24 hours." });
     setFormData({ name: "", email: "", message: "" });
   };
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -70,94 +35,59 @@ const Contact = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="max-w-6xl mx-auto"
+          transition={{ duration: 0.5 }}
+          className="max-w-4xl mx-auto"
         >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-center">
-            Get In <span className="text-gradient">Touch</span>
+          <p className="text-accent text-xs font-mono tracking-widest uppercase text-center mb-2">Contact</p>
+          <h2 className="text-2xl sm:text-3xl font-bold mb-3 text-center">
+            Let's <span className="text-gradient">Work Together</span>
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-accent to-primary mx-auto mb-16" />
+          <p className="text-sm text-muted-foreground text-center mb-10 max-w-lg mx-auto">
+            Looking for a backend developer who can also ship ML models? Let's talk about how I can help your team build scalable, production-ready systems.
+          </p>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
-            {/* Contact Info */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+            {/* Links */}
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
+              initial={{ opacity: 0, x: -30 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ delay: 0.2, duration: 0.6 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
             >
-              <h3 className="text-xl sm:text-2xl font-bold mb-6">Contact Information</h3>
-              <div className="space-y-4 mb-8">
-                {contactInfo.map((info, index) => (
+              <div className="space-y-3">
+                {links.map((link, index) => (
                   <motion.a
-                    key={info.label}
-                    href={info.href}
+                    key={link.label}
+                    href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    initial={{ opacity: 0, x: -30 }}
+                    initial={{ opacity: 0, x: -20 }}
                     animate={isInView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ delay: 0.3 + index * 0.1, duration: 0.4 }}
-                    className="flex items-center gap-4 p-4 bg-card rounded-xl border border-border/50 hover:border-primary/50 transition-all duration-300 card-hover group"
+                    transition={{ delay: 0.25 + index * 0.06, duration: 0.4 }}
+                    className="flex items-center gap-3 p-3.5 bg-card rounded-xl border border-border/50 hover:border-primary/40 transition-colors group"
                   >
-                    <div className="p-3 bg-accent/20 rounded-lg group-hover:bg-accent/30 transition-colors">
-                      <info.icon className="w-5 h-5 text-accent" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">{info.label}</p>
-                      <p className="font-medium">{info.value}</p>
-                    </div>
+                    <link.icon className="w-4 h-4 text-accent shrink-0" />
+                    <span className="text-sm font-medium text-foreground/80 group-hover:text-foreground transition-colors">{link.label}</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-muted-foreground ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
                   </motion.a>
                 ))}
               </div>
             </motion.div>
 
-            {/* Contact Form */}
+            {/* Form */}
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
+              initial={{ opacity: 0, x: 30 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ delay: 0.4, duration: 0.6 }}
+              transition={{ delay: 0.3, duration: 0.5 }}
             >
-              <h3 className="text-xl sm:text-2xl font-bold mb-6">Send a Message</h3>
               <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <Input
-                    name="name"
-                    placeholder="Your Name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="bg-card border-border/50 focus:border-primary"
-                  />
-                </div>
-                <div>
-                  <Input
-                    name="email"
-                    type="email"
-                    placeholder="Your Email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="bg-card border-border/50 focus:border-primary"
-                  />
-                </div>
-                <div>
-                  <Textarea
-                    name="message"
-                    placeholder="Your Message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows={6}
-                    className="bg-card border-border/50 focus:border-primary resize-none"
-                  />
-                </div>
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium"
-                >
+                <Input name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} required className="bg-card border-border/50 focus:border-primary h-11" />
+                <Input name="email" type="email" placeholder="Your Email" value={formData.email} onChange={handleChange} required className="bg-card border-border/50 focus:border-primary h-11" />
+                <Textarea name="message" placeholder="Tell me about your project or opportunity..." value={formData.message} onChange={handleChange} required rows={5} className="bg-card border-border/50 focus:border-primary resize-none" />
+                <Button type="submit" size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium">
                   Send Message
+                  <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </form>
             </motion.div>
