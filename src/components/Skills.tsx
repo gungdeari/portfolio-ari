@@ -62,9 +62,9 @@ const Skills = () => {
 
           <div className="space-y-6 mb-8">
             {categories.map((cat, ci) => (
-              <div key={cat.label}>
+              <div key={cat.label} className="text-center">
                 <p className="text-xs font-semibold text-foreground/60 uppercase tracking-wider mb-3">{cat.label}</p>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 justify-center">
                   {cat.skills.map((s, i) => (
                     <motion.span
                       key={s.name}
@@ -82,9 +82,9 @@ const Skills = () => {
             ))}
           </div>
 
-          <div>
+          <div className="text-center">
             <p className="text-xs font-semibold text-foreground/60 uppercase tracking-wider mb-3">Soft Skills</p>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 justify-center">
               {soft.map((s, i) => (
                 <motion.span
                   key={s.name}

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Download, ArrowDown } from "lucide-react";
+import { Download, Mouse } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import profileAvatar from "@/assets/profile-avatar.jpg";
 
@@ -82,14 +82,15 @@ const Hero = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 0.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1"
       >
         <motion.div
-          animate={{ y: [0, 8, 0] }}
+          animate={{ y: [0, 6, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
         >
-          <ArrowDown className="w-5 h-5 text-muted-foreground" />
+          <Mouse className="w-5 h-5 text-muted-foreground" />
         </motion.div>
+        <span className="text-[10px] text-muted-foreground font-mono">scroll</span>
       </motion.div>
     </section>
   );
