@@ -125,7 +125,7 @@ const ProjectsExperience = () => {
           </h2>
 
           {/* ── Project Experience ── */}
-          <p className="text-xs font-mono text-accent uppercase tracking-widest mb-6">What I Built</p>
+          <p className="text-xs font-mono text-accent uppercase tracking-widest text-center mb-6">What I Built</p>
 
           <div className="space-y-6 mb-16">
             {mainProjects.map((project, index) => (
@@ -241,7 +241,7 @@ const ProjectsExperience = () => {
           </motion.div>
 
           {/* ── Professional Experience ── */}
-          <p className="text-xs font-mono text-accent uppercase tracking-widest mb-6">Roles & Responsibilities</p>
+          <p className="text-xs font-mono text-accent uppercase tracking-widest text-center mb-6">Roles & Responsibilities</p>
 
           <div className="space-y-4">
             {experiences.map((exp, index) => (
