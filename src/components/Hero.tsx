@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Download, Mouse } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import profileAvatar from "@/assets/profile-avatar.jpg";
+import profileAvatar from "@/assets/profile.jpg";
 
 const Hero = () => {
   const scrollToSection = (id: string) => {
@@ -24,7 +24,7 @@ const Hero = () => {
             className="flex-1 text-center lg:text-left"
           >
             <p className="text-accent text-xs font-mono tracking-widest uppercase mb-4">
-              📍 Ubud, Bali
+              Ubud, Bali
             </p>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 leading-tight tracking-tight">
               Anak Agung Gede
@@ -36,14 +36,14 @@ const Hero = () => {
               Backend Developer
             </p>
             <p className="text-sm sm:text-base text-muted-foreground mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
-              I build reliable APIs, design scalable systems, and integrate machine learning into production — turning complex requirements into clean, working software.
+              Backend Developer who enjoys building clean systems and exploring machine learning to create smarter solutions.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
               <Button
                 size="lg"
                 className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium"
-                onClick={() => window.open('/cv.pdf', '_blank')}
+                onClick={() => window.open('/files/CV-ARISAPUTRA.pdf', '_blank')}
               >
                 <Download className="mr-2 h-4 w-4" />
                 Download CV
@@ -90,7 +90,6 @@ const Hero = () => {
         >
           <Mouse className="w-5 h-5 text-muted-foreground" />
         </motion.div>
-        <span className="text-[10px] text-muted-foreground font-mono">scroll</span>
       </motion.div>
     </section>
   );

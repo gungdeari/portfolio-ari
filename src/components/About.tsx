@@ -1,15 +1,15 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Server, Database, Brain } from "lucide-react";
+import { Layers, Database, Brain } from "lucide-react";
 
 const About = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const pillars = [
-    { icon: Server, title: "API & Backend", description: "REST APIs, server architecture, and system design" },
-    { icon: Database, title: "Database Design", description: "Schema design, query optimization, data modeling" },
-    { icon: Brain, title: "Machine Learning", description: "Model development, training pipelines, deployment" },
+    { icon: Layers, title: "Backend Development", description: "Building structured server-side systems and clean application logic." },
+    { icon: Database, title: "Database & Data Modeling", description: "Designing relational databases, organizing data, and optimizing queries." },
+    { icon: Brain, title: "Machine Learning", description: "Developing and training models to turn data into useful insights." },
   ];
 
   return (
@@ -33,7 +33,7 @@ const About = () => {
             transition={{ delay: 0.15, duration: 0.5 }}
             className="text-sm sm:text-base text-foreground/80 leading-relaxed text-center mb-10"
           >
-            Backend-focused engineer with hands-on experience in API development, relational database design, and server-side architecture. I bring additional depth in machine learning — from training CNN models to deploying them in production. I write clean, maintainable code and care about system reliability as much as shipping speed.
+            I develop server-side applications that handle data, business logic, and system processes, focusing on building structured, efficient, and maintainable systems. I create and test REST APIs to connect frontend and backend services, using Postman to make sure everything works properly and returns accurate data. I also enjoy working with data and building machine learning models to solve real-world problems, always exploring new techniques and improving my skills.
           </motion.p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">

@@ -9,9 +9,40 @@ import type { LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 
-import senyumBaliImg from "@/assets/project-senyum-bali.jpg";
-import sipenariImg from "@/assets/project-sipenari.jpg";
-import suratGisImg from "@/assets/project-surat-gis.jpg";
+import senyumBaliImg from "@/assets/project-senyum-bali.png";
+import senyumBaliImg2 from "@/assets/project-senyum-bali2.png";
+import senyumBaliImg3 from "@/assets/project-senyum-bali3.png";
+import senyumBaliImg4 from "@/assets/project-senyum-bali4.png";
+
+import sipenariImg from "@/assets/project-sipenari.png";
+import sipenariImg2 from "@/assets/project-sipenari2.png";
+import sipenariImg3 from "@/assets/project-sipenari3.png";
+import sipenariImg4 from "@/assets/project-sipenari4.png";
+import sipenariImg5 from "@/assets/project-sipenari5.png";
+import sipenariImg6 from "@/assets/project-sipenari6.png";
+import sipenariImg7 from "@/assets/project-sipenari7.jpg";
+
+import bangkit from "@/assets/Bangkit.jpeg";
+import bangkit2 from "@/assets/Bangkit2.png";
+import bangkit3 from "@/assets/Bangkit3.png";
+import bangkit4 from "@/assets/Bangkit4.jpeg";
+import bangkit5 from "@/assets/Bangkit5.jpeg";
+import bangkit6 from "@/assets/Bangkit6.jpeg";
+import bangkit7 from "@/assets/Bangkit7.jpeg";
+import bangkit8 from "@/assets/Bangkit8.jpeg";
+import bangkit9 from "@/assets/Bangkit9.jpg";
+import bangkit10 from "@/assets/Bangkit10.jpg";
+
+import suratGisImg from "@/assets/PPK.jpeg";
+import suratGisImg2 from "@/assets/PPK2.png";
+import suratGisImg3 from "@/assets/PPK3.png";
+import suratGisImg4 from "@/assets/PPK4.png";
+import suratGisImg5 from "@/assets/PPK5.png";
+import suratGisImg6 from "@/assets/PPK6.png";
+import suratGisImg7 from "@/assets/PPK7.jpg";
+import suratGisImg8 from "@/assets/PPK8.jpg";
+import { Certificate } from "crypto";
+
 
 const toolIcons: Record<string, LucideIcon> = {
   Figma: Paintbrush, React: Atom, "Tailwind CSS": Paintbrush,
@@ -21,84 +52,128 @@ const toolIcons: Record<string, LucideIcon> = {
   CNN: Cpu, JavaScript: FileCode,
 };
 
+const linkConfig: Record<
+  string,
+  {
+    label: string;
+    icon: LucideIcon;
+    className: string;
+    variant?: "default" | "outline";
+  }
+> = {
+  live: {
+    label: "Live",
+    icon: ExternalLink,
+    className: "bg-primary hover:bg-primary/90 text-primary-foreground",
+    variant: "default",
+  },
+  github: {
+    label: "Code",
+    icon: Github,
+    className: "border-border text-foreground hover:bg-muted",
+    variant: "outline",
+  },
+  certificate: {
+    label: "Credential",
+    icon: FileCode,
+    className: "bg-emerald-600 hover:bg-emerald-700 text-white",
+    variant: "default",
+  },
+};
+
 const mainProjects = [
   {
     title: "Senyum-Bali",
     year: "2025",
-    images: [senyumBaliImg],
+    images: [senyumBaliImg, senyumBaliImg2, senyumBaliImg3, senyumBaliImg4],
     role: "Frontend Developer",
     highlights: [
-      "Built interactive dental health education platform with React & Tailwind CSS",
-      "Designed responsive UI/UX in Figma, then implemented pixel-perfect frontend",
-      "Deployed on Netlify — accessible to Balinese communities post-Metatah ritual",
+      "Developed a thesis-based dental education platform for post-Metatah care in collaboration with a dentistry student",
+      "Designed the full UI in Figma and implemented a responsive frontend using React and Tailwind CSS",
+      "Built interactive educational features including a drag-and-drop mini game to enhance engagement",
+      "Developed using an AI-assisted workflow for faster prototyping, with manual refinement of logic, UI, and final implementation"
     ],
     tools: ["React", "Tailwind CSS", "Figma"],
-    link: "https://senyum-bali.netlify.app",
+    links: [
+      { type: "live", url: "https://senyum-bali.netlify.app"}
+    ]
   },
   {
     title: "Sipenari",
     year: "2024",
-    images: [sipenariImg],
-    role: "ML & Backend Developer",
+    images: [sipenariImg, sipenariImg2, sipenariImg3, sipenariImg4, sipenariImg5, sipenariImg6, sipenariImg7],
+    role: "Machine Learning & Backend Developer",
     highlights: [
-      "Trained CNN model on 1,000+ Balinese dance images — 92% classification accuracy",
-      "Deployed model via TensorFlow.js for real-time browser inference",
-      "Built Express.js backend API for image processing pipeline",
-      "Achieved Top 50 Product Track at Bangkit 2024",
+      "Developed a Sequential CNN model trained on 1,761 curated Balinese dance images across 7 classes",
+      "Achieved 90.12% classification accuracy through manual hyperparameter tuning and data augmentation",
+      "Converted and deployed the model using TensorFlow.js for real-time browser-based inference",
+      "Built an Express.js backend to handle image processing and prediction workflows",
+      "Recognized as Top 50 Product Track at Bangkit Academy 2024",
+      "Research published at ICUFN 2025: An Efficient CNN-Based Model for Balinese Dance Classification"
     ],
     tools: ["Python", "TensorFlow", "TensorFlow.js", "Express.js"],
-    github: "#",
+    links: [
+      { type: "github", url: "#"}
+    ]
+  },
+  {
+    title: "Bangkit Machine Learning Cohort",
+    year: "2024",
+    images: [bangkit2, bangkit, bangkit3, bangkit4, bangkit5, bangkit6, bangkit7, bangkit8, bangkit9, bangkit10],
+    role: "Machine Learning",
+    highlights: [
+      "Completed 700+ hours of structured learning in Machine Learning, Data Analytics, Deep Learning, and AI deployment with 90+ average performance.",
+      "Built end-to-end ML pipelines including data preprocessing, feature engineering, model training, evaluation, and deployment.",
+      "Developed supervised and unsupervised learning models using Scikit-learn and TensorFlow (CNN, Neural Networks).",
+      "Applied advanced deep learning techniques and optimized models using TensorFlow.",
+      "Deployed machine learning models to web environments using TensorFlow.js integration.",
+      "Completed a 200-hour Capstone Project delivering a production-ready ML solution in a cross-functional team."
+    ],
+    tools: ["Python", "TensorFlow", "TensorFlow.js", "Express.js"],
+    links: [ 
+      { type: "certificate", url:"/files/Bangkit-ari.pdf" }
+    ]
   },
   {
     title: "Surat & GIS Desa Batur Tengah",
     year: "2023",
-    images: [suratGisImg],
+    images: [suratGisImg, suratGisImg2, suratGisImg3, suratGisImg4, suratGisImg5, suratGisImg6, suratGisImg7, suratGisImg8, suratGisImg],
     role: "Backend & System Developer",
     highlights: [
-      "Designed and built Laravel REST API for village letter management system",
-      "Integrated GIS mapping for 20+ cultural tourism locations",
-      "Replaced manual paper-based workflow with fully digital administration",
+      "Built a fully online village letter management system using Laravel, replacing manual paper-based workflows",
+      "Implemented multi-role dashboards (Residents, IT Staff, Village Head, Traditional Leaders) with role-based access control",
+      "Enabled digital document generation with PDF export and barcode-based signature verification",
+      "Integrated GIS mapping for 20+ cultural tourism locations to support local promotion",
+      "Developed under the MBKM (Merdeka Belajar Kampus Merdeka) funded community service program",
     ],
     tools: ["Laravel", "MySQL", "GIS"],
+    links: [
+      { type: "github", url: "/files/982. STMIK Primakara __ Anak Agung Gede Ari Saputra.pdf"}
+    ]
   },
 ];
 
 const academicProjects = [
-  { title: "Decision Tree for Athlete Exercise Recommendations", tools: ["Python", "scikit-learn"], icon: BarChart3 },
-  { title: "SAW-Based Yoga Movement Recommender", tools: ["Python", "Data Analysis"], icon: Cpu },
-  { title: "CNN Fish Freshness Classification", tools: ["TensorFlow", "CNN", "Python"], icon: Brain },
+  { 
+    title: "Decision Tree for Athlete Exercise Recommendations", 
+    description: "A machine learning model that generates personalized training recommendations based on athlete performance data using Decision Tree classification.", 
+    tools: ["Python", "scikit-learn"], 
+    icon: BarChart3 
+  },
+  { 
+    title: "SAW-Based Yoga Movement Recommender", 
+    description: "Built a SAW-based decision support system to rank and recommend suitable yoga movements using multi-criteria evaluation. Deployed with Laravel and developed an admin dashboard for dynamic content and criteria management.", 
+    tools: ["Python", "Data Analysis", "Laravel"], 
+    icon: Cpu 
+  },
+  { 
+    title: "CNN Fish Freshness Classification", 
+    description: "A deep learning model that classifies fish freshness from images using Convolutional Neural Networks, focusing on visual feature extraction and image-based prediction.", 
+    tools: ["TensorFlow", "CNN", "Python"], 
+    icon: Brain 
+  },
 ];
 
-const experiences = [
-  {
-    title: "Machine Learning Cohort",
-    org: "Bangkit Academy 2024 · Google / Dicoding",
-    period: "2024",
-    points: [
-      "Built capstone app 'Ageman' — Balinese dance recognition using CNN",
-      "Achieved Top 50 Product Track out of 800+ teams",
-      "Completed TensorFlow Developer Certificate simulation",
-    ],
-  },
-  {
-    title: "IT Developer",
-    org: "PPK ORMAWA",
-    period: "2023",
-    points: [
-      "Built letter management system + GIS for Desa Batur Tengah",
-      "Led technical architecture and database design",
-    ],
-  },
-  {
-    title: "Freelance Developer",
-    org: "Independent",
-    period: "2022 – Present",
-    points: [
-      "Delivered educational web projects for clients",
-      "Provided ML & data consultation for academic final projects",
-    ],
-  },
-];
 
 const ProjectsExperience = () => {
   const ref = useRef(null);
@@ -169,17 +244,32 @@ const ProjectsExperience = () => {
                           );
                         })}
                       </div>
-                      <div className="flex gap-2">
-                        {project.link && (
-                          <Button size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground h-8 text-xs" onClick={() => window.open(project.link, "_blank")}>
-                            <ExternalLink className="mr-1.5 h-3.5 w-3.5" /> Live
-                          </Button>
-                        )}
-                        {project.github && (
-                          <Button size="sm" variant="outline" className="border-border text-foreground hover:bg-muted h-8 text-xs" onClick={() => window.open(project.github, "_blank")}>
-                            <Github className="mr-1.5 h-3.5 w-3.5" /> Code
-                          </Button>
-                        )}
+                      <div className="flex gap-2 flex-wrap">
+                        {project.links?.map((linkItem, i) => {
+                          const config = linkConfig[linkItem.type as keyof typeof linkConfig];
+                          if (!config) return null;
+
+                          const Icon = config.icon;
+
+                          return (
+                            <Button
+                              key={i}
+                              size="sm"
+                              variant={config.variant ?? "default"}
+                              className={`h-8 text-xs ${config.className}`}
+                              asChild
+                            >
+                              <a
+                                href={linkItem.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                <Icon className="mr-1.5 h-3.5 w-3.5" />
+                                {config.label}
+                              </a>
+                            </Button>
+                          );
+                        })}
                       </div>
                     </div>
                   </div>
@@ -188,7 +278,7 @@ const ProjectsExperience = () => {
                   <div className="md:w-[45%] flex flex-col">
                     {/* Main image */}
                     <div
-                      className="relative group cursor-pointer flex-1 min-h-[200px] md:min-h-0"
+                      className="relative group cursor-pointer h-[250px] sm:h-[300px] md:h-[320px] lg:h-[350px] overflow-hidden"
                       onClick={() => openGallery(project.images, project.title, 0)}
                     >
                       <img src={project.images[0]} alt={project.title} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
@@ -220,30 +310,43 @@ const ProjectsExperience = () => {
           </div>
 
           {/* ── Academic Consultations ── */}
-          <motion.div initial={{ opacity: 0, y: 25 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.5, duration: 0.5 }}>
-            <div className="bg-card border border-border/50 rounded-2xl p-5 sm:p-7 mb-16">
-              <h3 className="text-base font-bold mb-1">Academic Consultations</h3>
-              <p className="text-xs text-muted-foreground mb-4">ML & data projects I consulted on for academic theses.</p>
-              <div className="space-y-3">
-                {academicProjects.map((project, index) => (
-                  <motion.div key={project.title} initial={{ opacity: 0, x: -15 }} animate={isInView ? { opacity: 1, x: 0 } : {}} transition={{ delay: 0.6 + index * 0.08, duration: 0.4 }} className="flex items-center gap-3 p-3 bg-muted/50 rounded-lg">
-                    <project.icon className="w-4 h-4 text-accent shrink-0" />
-                    <span className="text-sm font-medium flex-1">{project.title}</span>
-                    <div className="flex gap-1 shrink-0">
-                      {project.tools.map((tool) => (
-                        <span key={tool} className="text-xs px-2 py-0.5 bg-background rounded text-muted-foreground">{tool}</span>
-                      ))}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
+          <div className="grid sm:grid-cols-3 gap-4 mb-8">
+            {academicProjects.map((project, index) => (
+              <motion.div
+                key={project.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.6 + index * 0.08, duration: 0.4 }}
+                className="p-4 bg-muted/50 rounded-xl border border-border/40 hover:shadow-md transition"
+              >
+                <div className="flex items-center gap-2 mb-2">
+                  <project.icon className="w-4 h-4 text-accent" />
+                  <h4 className="text-sm font-semibold">{project.title}</h4>
+                </div>
+
+                <p className="text-xs text-muted-foreground mb-3 leading-relaxed">
+                  {project.description}
+                </p>
+
+                <div className="flex flex-wrap gap-1">
+                  {project.tools.map((tool) => (
+                    <span
+                      key={tool}
+                      className="text-xs px-2 py-0.5 bg-background rounded text-muted-foreground"
+                    >
+                      {tool}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
 
           {/* ── Professional Experience ── */}
-          <p className="text-xs font-mono text-accent uppercase tracking-widest text-center mb-6">Roles & Responsibilities</p>
+          {/* <p className="text-xs font-mono text-accent uppercase tracking-widest text-center mb-6">Roles & Responsibilities</p> */}
 
-          <div className="space-y-4">
+          {/* <div className="space-y-4">
             {experiences.map((exp, index) => (
               <motion.div key={exp.title} initial={{ opacity: 0, y: 20 }} animate={isInView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.7 + index * 0.1, duration: 0.4 }} className="bg-card rounded-xl p-5 border border-border/50 hover:border-primary/30 transition-colors">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-3">
@@ -262,7 +365,7 @@ const ProjectsExperience = () => {
                 </ul>
               </motion.div>
             ))}
-          </div>
+          </div> */}
         </motion.div>
       </div>
 

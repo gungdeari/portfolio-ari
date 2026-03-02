@@ -17,7 +17,6 @@ const Contact = () => {
     { icon: Phone, label: "+62 857-3924-8003", href: "tel:+6285739248003" },
     { icon: Linkedin, label: "linkedin.com/in/agungarisaputra", href: "https://linkedin.com/in/agungarisaputra" },
     { icon: Github, label: "github.com/gungdeari", href: "https://github.com/gungdeari" },
-    { icon: Globe, label: "s.id/portoari", href: "https://s.id/portoari" },
   ];
 
   const handleSubmit = (e: React.FormEvent) => {

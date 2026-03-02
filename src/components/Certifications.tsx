@@ -8,28 +8,28 @@ const Certifications = () => {
 
   const certifications = [
     {
-      title: "Data Analysis with Python",
+      title: "Memulai Dasar Pemrograman untuk Menjadi Pengembang Software",
       issuer: "Dicoding",
-      category: "Data Science",
-      link: "https://www.dicoding.com",
+      category: "Software Development",
+      link: "/files/Dicoding.pdf",
     },
     {
-      title: "Machine Learning Specialization",
-      issuer: "Coursera",
-      category: "Machine Learning",
-      link: "https://www.coursera.org",
+      title: "Full-Stack Developer with Laravel: Web Travel",
+      issuer: "Buildwithangga",
+      category: "Software Development",
+      link: "/files/full-stack-developer-with-laravel-web-travel-ari-saputra.pdf",
     },
     {
       title: "Software Development (System Analyst)",
-      issuer: "BNSP",
+      issuer: "Badan Nasional Sertifikat Profesi",
       category: "Professional",
-      link: null,
+      link: "/files/Bnsp.pdf",
     },
     {
-      title: "Business Intelligence Associate",
-      issuer: "Logical Operations",
-      category: "Business Intelligence",
-      link: null,
+      title: "Machine Learning Specialization Course",
+      issuer: "Coursera",
+      category: "Machine Learning",
+      link: "/files/ML-course.pdf",
     },
   ];
 
