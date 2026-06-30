@@ -36,7 +36,6 @@ const About = () => {
             I enjoy building backend systems that are reliable, easy to maintain, and solve real-world problems. Most of my projects are built with Laravel and MySQL, where I focus on designing clean database structures, implementing business logic, and developing REST APIs that connect seamlessly with frontend applications.
             <br />
             Beyond backend development, I have experience working with React for frontend integration and a strong academic background in Machine Learning. Rather than treating AI as the main solution, I see it as a practical tool that can enhance web applications when it provides real value.
-
             I also embrace modern AI-assisted development workflows to improve productivity, while ensuring that system architecture, code quality, and technical decisions remain fully under my control.
           </motion.p>
 
