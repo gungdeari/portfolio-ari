@@ -1,12 +1,21 @@
 import { motion } from "framer-motion";
 import { Download, Mouse } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import profileAvatar from "@/assets/profile.jpg";
+import profileAvatar from "@/assets/foto-profile.png";
 
 const Hero = () => {
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
+
+  const coreTech = [
+    "Laravel",
+    "React",
+    "REST API",
+    "MySQL",
+    "Git",
+    "Postman",
+  ];
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center">
@@ -33,11 +42,22 @@ const Hero = () => {
             </h1>
 
             <p className="text-lg sm:text-xl md:text-2xl text-foreground font-medium mb-3">
-              Backend Developer
+              Backend-Focused Fullstack Developer
             </p>
-            <p className="text-sm sm:text-base text-muted-foreground mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
-              Backend Developer who enjoys building clean systems and exploring machine learning to create smarter solutions.
+            <p className="text-sm sm:text-base text-muted-foreground mb-4 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+              I build reliable backend systems with Laravel, MySQL, and REST APIs while leveraging machine learning knowledge to create intelligent, data-driven applications. Passionate about writing clean, maintainable code and continuously learning modern technologies.
             </p>
+
+            <div className="flex flex-wrap gap-2 justify-center lg:justify-start mb-6">
+              {coreTech.map((tech) => (
+                <span
+                  key={tech}
+                  className="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
               <Button

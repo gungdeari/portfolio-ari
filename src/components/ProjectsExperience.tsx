@@ -14,6 +14,12 @@ import senyumBaliImg2 from "@/assets/project-senyum-bali2.png";
 import senyumBaliImg3 from "@/assets/project-senyum-bali3.png";
 import senyumBaliImg4 from "@/assets/project-senyum-bali4.png";
 
+import baliEsape from "@/assets/baliescape1.png";
+import baliEsape2 from "@/assets/baliescape2.png";
+import baliEsape3 from "@/assets/baliescape3.png";
+import baliEsape4 from "@/assets/baliescape4.png";
+import baliEsape5 from "@/assets/baliescape5.png";
+
 import sipenariImg from "@/assets/project-sipenari.png";
 import sipenariImg2 from "@/assets/project-sipenari2.png";
 import sipenariImg3 from "@/assets/project-sipenari3.png";
@@ -41,7 +47,6 @@ import suratGisImg5 from "@/assets/PPK5.png";
 import suratGisImg6 from "@/assets/PPK6.png";
 import suratGisImg7 from "@/assets/PPK7.jpg";
 import suratGisImg8 from "@/assets/PPK8.jpg";
-import { Certificate } from "crypto";
 
 
 const toolIcons: Record<string, LucideIcon> = {
@@ -82,6 +87,27 @@ const linkConfig: Record<
 };
 
 const mainProjects = [
+  {
+    title: "BaliEscape",
+    year: "2026",
+    images: [baliEsape, baliEsape2, baliEsape3, baliEsape4, baliEsape5],
+    role: "Fullstack Developer",
+    highlights: [
+      "Built a complete travel booking platform from scratch to learn React through hands-on, project-based practice after starting with no prior frontend framework experience",
+      "Designed and built a RESTful API with Laravel following a clean Controller → Service → Repository → Resource architecture, with token-based auth via Sanctum and role-based access control using Spatie Permissions",
+      "Connected a fully decoupled React + TypeScript frontend to the API, handling auth state, protected routing, and async data fetching across 10+ resource endpoints",
+      "Implemented a multi-step booking flow with manual payment verification — proof-of-payment upload, admin confirmation, and automatic PDF invoice generation",
+      "Built a reviews and ratings system with optimistic UI updates, and an admin dashboard for reviewing payments and managing bookings",
+      "Deployed both services independently to production — Laravel API on Railway with a managed MySQL database, React frontend on Vercel — resolving real deployment issues including CORS, environment configuration, and database connectivity",
+    ],
+    tools: ["React", "Laravel", "MySQL", "Docker"],
+    links: [
+      { type: "live", url: "https://your-vercel-url.vercel.app" },
+      { type: "api", url: "https://your-railway-url.up.railway.app/api/v1" },
+      { type: "github", url: "https://github.com/yourusername/bali-escape-frontend" },
+      { type: "github-api", url: "https://github.com/yourusername/bali-escape-api" }
+    ]
+  },
   {
     title: "Senyum-Bali",
     year: "2025",

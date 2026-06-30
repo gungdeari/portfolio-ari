@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Code2, Database, Brain, Atom, Server, FileCode, Globe, Paintbrush, Users, MessageSquare, Handshake, RefreshCw } from "lucide-react";
+import { Code2, Database, Brain, Atom, Server, FileCode, Globe, Paintbrush, Users, MessageSquare, Handshake, RefreshCw, Send } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 const Skills = () => {
@@ -16,6 +16,7 @@ const Skills = () => {
         { name: "Python", icon: Code2 },
         { name: "SQL / MySQL", icon: Database },
         { name: "REST API Design", icon: Globe },
+        { name: "Postman", icon: Send}
       ],
     },
     {
@@ -31,7 +32,7 @@ const Skills = () => {
       label: "Frontend & Tools",
       skills: [
         { name: "React", icon: Atom },
-        { name: "JavaScript / TS", icon: FileCode },
+        { name: "JavaScript", icon: FileCode },
         { name: "Tailwind CSS", icon: Paintbrush },
         { name: "Figma", icon: Paintbrush },
       ],

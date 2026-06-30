@@ -7,9 +7,9 @@ const About = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   const pillars = [
-    { icon: Layers, title: "Backend Development", description: "Building structured server-side systems and clean application logic." },
-    { icon: Database, title: "Database & Data Modeling", description: "Designing relational databases, organizing data, and optimizing queries." },
-    { icon: Brain, title: "Machine Learning", description: "Developing and training models to turn data into useful insights." },
+    { icon: Layers, title: "Backend Development", description: "Building scalable backend applications with Laravel, REST APIs, authentication, and clean business logic." },
+    { icon: Database, title: "Database & Data Modeling", description: "Designing normalized MySQL databases, defining relationships, and optimizing data structures for maintainability." },
+    { icon: Brain, title: "Machine Learning", description: "Applying machine learning knowledge to integrate intelligent features into web applications when needed." },
   ];
 
   return (
@@ -33,7 +33,11 @@ const About = () => {
             transition={{ delay: 0.15, duration: 0.5 }}
             className="text-sm sm:text-base text-foreground/80 leading-relaxed text-center mb-10"
           >
-            I develop server-side applications that handle data, business logic, and system processes, focusing on building structured, efficient, and maintainable systems. I create and test REST APIs to connect frontend and backend services, using Postman to make sure everything works properly and returns accurate data. I also enjoy working with data and building machine learning models to solve real-world problems, always exploring new techniques and improving my skills.
+            I enjoy building backend systems that are reliable, easy to maintain, and solve real-world problems. Most of my projects are built with Laravel and MySQL, where I focus on designing clean database structures, implementing business logic, and developing REST APIs that connect seamlessly with frontend applications.
+            <br />
+            Beyond backend development, I have experience working with React for frontend integration and a strong academic background in Machine Learning. Rather than treating AI as the main solution, I see it as a practical tool that can enhance web applications when it provides real value.
+
+            I also embrace modern AI-assisted development workflows to improve productivity, while ensuring that system architecture, code quality, and technical decisions remain fully under my control.
           </motion.p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
