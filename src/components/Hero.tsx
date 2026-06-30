@@ -63,7 +63,7 @@ const Hero = () => {
               <Button
                 size="lg"
                 className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium"
-                onClick={() => window.open('/files/CV-ARISAPUTRA.pdf', '_blank')}
+                onClick={() => window.open('/files/CV-FullStack-AriSaputra.pdf', '_blank')}
               >
                 <Download className="mr-2 h-4 w-4" />
                 Download CV
